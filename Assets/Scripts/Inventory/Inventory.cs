@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
 {
     private List<Slot> slots = new List<Slot>();
 
-    private void Start()
+    void Start()
     {
         slots = GetComponentsInChildren<Slot>().ToList();
 

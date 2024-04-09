@@ -1,21 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    private Image slotImage;
-    private Image itemImage;
-    private Text countText;
+    [SerializeField] private Image slotImage;
+    [SerializeField] private Image itemImage;
+    [SerializeField] private TextMeshProUGUI countText;
 
     public void fillSlot(Item item)
     {
-        slotImage = GetComponent<Image>();
-        itemImage = GetComponentsInChildren<Image>()[1];
-        countText = GetComponentInChildren<Text>();
 
-        Debug.Log(item);
+
+        Debug.Log(JsonUtility.ToJson(item));
 
         if (item.count > 0)
             countText.text = item.count.ToString();
@@ -23,5 +20,4 @@ public class Slot : MonoBehaviour
             countText.text = "";
             itemImage.sprite = Resources.Load<Sprite>(item.img);
     }
-
 }

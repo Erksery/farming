@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Crop : MonoBehaviour
 {
+    [SerializeField] private Collider2D _collider;
+
     private int STEP_EMPTY = 0;
     private int STEP_GROWS = 1;
     private int STEP_READY = 2;
@@ -49,6 +51,7 @@ public class Crop : MonoBehaviour
             {
                 productSprite.sprite = Resources.Load<Sprite>("Sprites/empty");
                 seedSprite.sprite = Resources.Load<Sprite>("Sprites/extraDirt");
+                _collider.enabled = false;
             }
         }
     }
@@ -60,6 +63,7 @@ public class Crop : MonoBehaviour
         productSprite.sprite = Resources.Load<Sprite>(cropItem.img);
 
         step = STEP_READY;
+        _collider.enabled = true;
     }
     private void FixedUpdate()
     {
