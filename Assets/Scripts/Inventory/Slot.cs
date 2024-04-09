@@ -11,9 +11,6 @@ public class Slot : MonoBehaviour
     public void fillSlot(Item item)
     {
 
-
-        Debug.Log(JsonUtility.ToJson(item));
-
         if (item.count > 0)
             countText.text = item.count.ToString();
         else

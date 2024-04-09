@@ -32,17 +32,21 @@ public class Crop : MonoBehaviour
     }
     void OnMouseDown()
     {
-        Item item = new Item("pumpkin", "Sprites/pumpkin", 1, Item.TYPEFOOD, 10, 1, 5f);
 
-        if(readyForAction)
+        Item item = Player.items[0];
+
+        if (readyForAction)
         {
             
             if (step == STEP_EMPTY)
             {
+                Debug.Log(JsonUtility.ToJson(item));
                 if (item.type == Item.TYPEFOOD)
                 {
+                    Player.removeItem();
                     step = STEP_GROWS;
                     cropItem = item;
+                    //cropItem.count = 1;
                     seedSprite.sprite = Resources.Load<Sprite>("Sprites/seeds");
                     StartCoroutine(grow());
                 }
@@ -52,6 +56,9 @@ public class Crop : MonoBehaviour
                 productSprite.sprite = Resources.Load<Sprite>("Sprites/empty");
                 seedSprite.sprite = Resources.Load<Sprite>("Sprites/extraDirt");
                 _collider.enabled = false;
+               
+                Player.checkItemExists(cropItem);
+                step = STEP_PLOW;
             }
         }
     }
