@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     {
         Item item = new Item("pumpkin", "Sprites/pumpkin", Item.TYPEFOOD, 3, 10, 1, 5f);
         items.Add(item);
+        items.Add(getEmptyItem());
     }
 
     public static Item getHandItem()

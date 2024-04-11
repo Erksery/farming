@@ -32,15 +32,13 @@ public class Crop : MonoBehaviour
     }
     void OnMouseDown()
     {
-
+        Debug.Log(readyForAction);
         Item item = Player.items[0];
 
         if (readyForAction)
         {
-            
             if (step == STEP_EMPTY)
             {
-                Debug.Log(JsonUtility.ToJson(item));
                 if (item.type == Item.TYPEFOOD)
                 {
                     Player.removeItem();
@@ -53,6 +51,7 @@ public class Crop : MonoBehaviour
             }
             else if (step == STEP_READY)
             {
+                
                 productSprite.sprite = Resources.Load<Sprite>("Sprites/empty");
                 seedSprite.sprite = Resources.Load<Sprite>("Sprites/extraDirt");
                 _collider.enabled = false;
@@ -74,9 +73,9 @@ public class Crop : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(step != STEP_GROWS)
+        if (step != STEP_GROWS)
         {
-            if(Vector3.Distance(this.transform.position, player.transform.position) <= 1.5f)
+            if (Vector3.Distance(this.transform.position, player.transform.position) <= 1.5f)
             {
                 readyForAction = true;
                 cropSprite.sprite = Resources.Load<Sprite>("Sprites/seedbedSelected");
