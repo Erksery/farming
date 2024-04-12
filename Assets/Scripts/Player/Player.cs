@@ -8,8 +8,19 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        Item item = new Item("pumpkin", "Sprites/pumpkin", Item.TYPEFOOD, 3, 10, 1, 5f);
+        Item item = new Item("pumpkin", "Sprites/pumpkin", Item.TYPEFOOD, 3, 2, 1, 5f);
         items.Add(item);
+        items.Add(new Item("plow", "Sprites/startPlow", Item.TYPEFOOD, 0, 0, 0, 0f));
+        items.Add(new Item("carrot", "Sprites/carrot", Item.TYPEFOOD, 2, 6, 1, 10f));
+        items.Add(new Item("beet", "Sprites/beet", Item.TYPEFOOD, 5, 10, 3, 15f));
+        items.Add(getEmptyItem());
+        items.Add(getEmptyItem());
+        items.Add(getEmptyItem());
+        items.Add(getEmptyItem());
+        items.Add(getEmptyItem());
+        items.Add(getEmptyItem());
+        items.Add(getEmptyItem());
+        items.Add(getEmptyItem());
         items.Add(getEmptyItem());
     }
 
@@ -47,7 +58,7 @@ public class Player : MonoBehaviour
         {
             if (item.name == items[i].name)
             {
-                items[i].count += 1;
+                items[i].count += item.price;
                 exist = true;
                 break;
             }

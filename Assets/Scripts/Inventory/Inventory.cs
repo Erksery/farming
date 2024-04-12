@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
         int i = 0;
         foreach(Slot slot in slots)
         {
-            slot.fillSlot(Player.items[i], i);
+            slot.fillSlot(i);
 
             i++;
         }

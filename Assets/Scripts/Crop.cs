@@ -32,8 +32,10 @@ public class Crop : MonoBehaviour
     }
     void OnMouseDown()
     {
-        Debug.Log(readyForAction);
+
         Item item = Player.items[0];
+
+        Debug.Log(readyForAction);
 
         if (readyForAction)
         {
@@ -59,6 +61,14 @@ public class Crop : MonoBehaviour
                 Player.checkItemExists(cropItem);
                 step = STEP_PLOW;
             }
+            else if (step == STEP_PLOW)
+            {
+                if(item.type == Item.TYPEFOOD)
+                {
+                    seedSprite.sprite = Resources.Load<Sprite>("Sprites/empty");
+                    step = STEP_EMPTY;
+                }
+            }    
         }
     }
     private IEnumerator grow()
